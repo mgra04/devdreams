@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% block content %}
+<section class="posts">
+  <div class="posts-img-box">
+    <picture>
+      <source
+        srcset="{{ url_for('static', filename='img/posts-header-img-desktop.svg') }}"
+        media="(min-width: 1440px)"
+      />
+      <source
+        srcset="{{ url_for('static', filename='img/posts-header-img-big-tablet.svg') }}"
+        media="(min-width: 1024px)"
+      />
+      <img
+        class="posts-header-img"
+        src="{{ url_for('static', filename='img/posts-header-img-mobile.png') }}"
+        alt="Description of the image"
+      />
+    </picture>
+    <picture>
+      <source
+        srcset="{{ url_for('static', filename='img/posts-header-text-desktop.svg') }}"
+        media="(min-width: 1024px)"
+      />
+      <img
+        class="posts-header-text"
+        src="{{ url_for('static', filename='img/posts-header-text-mobile.svg') }}"
+        alt="Description of the image"
+      />
+    </picture>
+  </div>
+
+  <div class="posts-container">
+    {% if posts %} {% for post in posts %}
+    <a href="{{ url_for('views.post', post_id=post.id) }}" class="post-card">
+      <img
+        src="{{ url_for('static', filename='img/post-card-top-line.svg') }}"
+        alt="purple line"
+        class="post-card-top-line"
+      />
+      <img
+        src="{{ url_for('static', filename='img/post-card-bottom-line.svg') }}"
+        alt="white line"
+        class="post-card-bottom-line"
+      />
+      <div class="post-img-box">
+        <div class="categories">
+          <div class="category">
+            <span class="category-text">{{ post.category }}</span>
+          </div>
+        </div>
+        <img src="{{ post.image_url }}" alt="Description" class="post-img" />
+      </div>
+
+      <div class="post-card-divider"></div>
+      <div class="post-card-content">
+        <h3 class="post-card-title">{{ post.title }}</h3>
+        <div class="authors-section">
+          <div class="authors-imgs">
+            <img
+              src="{{ url_for('static', filename='img/author1.png') }}"
+              alt="
+            portrait photo"
+              class="author-img"
+            />
+            <img
+              src="{{ url_for('static', filename='img/author2.png') }}"
+              alt="
+            portrait photo"
+              class="author-img img-hidden"
+            />
+          </div>
+          <div class="authors-info">
+            <p class="authors-names">Mikołaj Grabowski, Bartek Kluza</p>
+            <div class="authors-date">
+              <p class="authors-text">{{ post.created_date() }}</p>
+              <div class="dot"></div>
+              <p class="authors-text">{{ post.read_time }} minutes read</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    {% endfor %} {% else %}
+    <p>No posts added yet</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

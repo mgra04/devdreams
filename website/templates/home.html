@@ -1,0 +1,366 @@
+{% extends 'base.html' %} {% block content %}
+<section class="home">
+  <div class="home-img-box">
+    <picture>
+      <source
+        srcset="{{ url_for('static', filename='img/home-logo-desktop.svg') }}"
+        media="(min-width: 1440px)"
+      />
+      <source
+        srcset="{{ url_for('static', filename='img/home-logo-big-tablet.svg') }}"
+        media="(min-width: 1024px)"
+      />
+      <source
+        srcset="{{ url_for('static', filename='img/home-logo-tablet.svg') }}"
+        media="(min-width: 768px)"
+      />
+      <img
+        class="home-img"
+        src="{{ url_for('static', filename='img/home-logo-mobile.svg') }}"
+        alt="Description of the image"
+      />
+    </picture>
+  </div>
+  <div class="home-info">
+    <p class="description">
+      Explore tutorials, tips, and projects in web development. Join our
+      community and start turning your coding dreams into reality.
+    </p>
+    <button class="explore-btn">Explore now</button>
+  </div>
+  <div class="home-divider-box">
+    <picture>
+      <source
+        srcset="{{ url_for('static', filename='img/home-divider-desktop.svg') }}"
+        media="(min-width: 1200px)"
+      />
+      <source
+        srcset="{{ url_for('static', filename='img/home-divider-tablet.svg') }}"
+        media="(min-width: 768px)"
+      />
+      <img
+        class="home-divider-img"
+        src="{{ url_for('static', filename='img/home-divider-mobile.svg') }}"
+        alt="Description of the image"
+      />
+    </picture>
+  </div>
+</section>
+
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <div class="explore-card">
+        <img
+          src="{{ url_for('static', filename='img/explore-card-glow.svg') }}"
+          alt="blured purple circle"
+          class="card-glow"
+        />
+        <div class="card-icons">
+          <img
+            src="{{ url_for('static', filename='img/figma-logo.svg') }}"
+            alt="figma logo"
+            class="card-icon"
+          />
+        </div>
+        <div class="card-content">
+          <h3 class="card-heading">Figma</h3>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, elit augue adipiscing elit. Nulla semper
+            nibh, a condimentum libero auctor suscipit. sollicitudin mattis.
+          </p>
+          <a href="{{ url_for('views.figma') }}" class="see-post-btn"
+            >See posts</a
+          >
+          <img
+            src="{{ url_for('static', filename='img/explore-card-lines-mobile.svg') }}"
+            alt="neon lines"
+            class="card-lines"
+          />
+          <img
+            src="{{ url_for('static', filename='img/explore-card-bottom-line.svg') }}"
+            alt="neon line"
+            class="card-bottom-line"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="explore-card">
+        <img
+          src="{{ url_for('static', filename='img/explore-card-glow.svg') }}"
+          alt="blured purple circle"
+          class="card-glow"
+        />
+        <div class="card-icons-box">
+          <div class="card-icons-small-icons">
+            <img
+              src="{{ url_for('static', filename='img/html-icon.svg') }}"
+              alt="html logo"
+              class="card-icon"
+            />
+            <img
+              src="{{ url_for('static', filename='img/css-icon.svg') }}"
+              alt="css logo"
+              class="card-icon"
+            />
+            <img
+              src="{{ url_for('static', filename='img/javascript-icon.svg') }}"
+              alt="javascript logo"
+              class="card-icon"
+            />
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-heading">Fundamentals</h3>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, elit augue adipiscing elit. Nulla semper
+            nibh, a condimentum libero auctor suscipit. sollicitudin mattis.
+          </p>
+          <a href="{{ url_for('views.fundamentals') }}" class="see-post-btn"
+            >See posts</a
+          >
+          <picture>
+            <source
+              srcset="{{ url_for('static', filename='img/explore-card-lines-desktop.svg') }}"
+              media="(min-width: 1200px)"
+            />
+            <img
+              class="card-lines"
+              src="{{ url_for('static', filename='img/explore-card-lines-mobile.svg') }}"
+              alt="Description of the image"
+            />
+          </picture>
+          <img
+            src="{{ url_for('static', filename='img/explore-card-bottom-line.svg') }}"
+            alt="neon line"
+            class="card-bottom-line"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="explore-card">
+        <img
+          src="{{ url_for('static', filename='img/explore-card-glow.svg') }}"
+          alt="blured purple circle"
+          class="card-glow"
+        />
+        <div class="card-icons-box">
+          <div class="card-icons-v3">
+            <img
+              src="{{ url_for('static', filename='img/react-icon.svg') }}"
+              alt="html logo"
+              class="card-icon"
+            />
+            <img
+              src="{{ url_for('static', filename='img/next-icon.svg') }}"
+              alt="css logo"
+              class="card-icon"
+            />
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-heading">Javascript frameworks</h3>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, elit augue adipiscing elit. Nulla semper
+            nibh, a condimentum libero auctor suscipit. sollicitudin mattis.
+          </p>
+          <a href="{{ url_for('views.js_frameworks') }}" class="see-post-btn"
+            >See posts</a
+          >
+          <picture>
+            <source
+              srcset="{{ url_for('static', filename='img/explore-card-lines-desktop.svg') }}"
+              media="(min-width: 1200px)"
+            />
+            <img
+              class="card-lines"
+              src="{{ url_for('static', filename='img/explore-card-lines-mobile.svg') }}"
+              alt="Description of the image"
+            />
+          </picture>
+          <img
+            src="{{ url_for('static', filename='img/explore-card-bottom-line.svg') }}"
+            alt="neon line"
+            class="card-bottom-line"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="explore-card">
+        <img
+          src="{{ url_for('static', filename='img/explore-card-glow.svg') }}"
+          alt="blured purple circle"
+          class="card-glow"
+        />
+        <div class="card-icons-box">
+          <div class="card-icons-small-icons">
+            <img
+              src="{{ url_for('static', filename='img/python-icon.svg') }}"
+              alt="html logo"
+              class="card-icon"
+            />
+            <img
+              src="{{ url_for('static', filename='img/flask-icon.svg') }}"
+              alt="css logo"
+              class="card-icon"
+            />
+            <img
+              src="{{ url_for('static', filename='img/django-icon.svg') }}"
+              alt="javascript logo"
+              class="card-icon"
+            />
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-heading">Python & frameworks</h3>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, elit augue adipiscing elit. Nulla semper
+            nibh, a condimentum libero auctor suscipit. sollicitudin mattis.
+          </p>
+          <a
+            href="{{ url_for('views.python_frameworks') }}"
+            class="see-post-btn"
+            >See posts</a
+          >
+          <picture>
+            <source
+              srcset="{{ url_for('static', filename='img/explore-card-lines-desktop.svg') }}"
+              media="(min-width: 1200px)"
+            />
+            <img
+              class="card-lines"
+              src="{{ url_for('static', filename='img/explore-card-lines-mobile.svg') }}"
+              alt="Description of the image"
+            />
+          </picture>
+          <img
+            src="{{ url_for('static', filename='img/explore-card-bottom-line.svg') }}"
+            alt="neon line"
+            class="card-bottom-line"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="explore-card">
+        <img
+          src="{{ url_for('static', filename='img/explore-card-glow.svg') }}"
+          alt="blured purple circle"
+          class="card-glow"
+        />
+        <div class="card-icons-box">
+          <div class="card-icons-v3">
+            <img
+              src="{{ url_for('static', filename='img/three-icon.svg') }}"
+              alt="html logo"
+              class="card-icon"
+            />
+            <img
+              src="{{ url_for('static', filename='img/blender-icon.svg') }}"
+              alt="css logo"
+              class="card-icon"
+            />
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-heading">Introduction to 3D</h3>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, elit augue adipiscing elit. Nulla semper
+            nibh, a condimentum libero auctor suscipit. sollicitudin mattis.
+          </p>
+          <a href="{{ url_for('views.three_d') }}" class="see-post-btn"
+            >See posts</a
+          >
+          <picture>
+            <source
+              srcset="{{ url_for('static', filename='img/explore-card-lines-desktop.svg') }}"
+              media="(min-width: 1200px)"
+            />
+            <img
+              class="card-lines"
+              src="{{ url_for('static', filename='img/explore-card-lines-mobile.svg') }}"
+              alt="Description of the image"
+            />
+          </picture>
+          <img
+            src="{{ url_for('static', filename='img/explore-card-bottom-line.svg') }}"
+            alt="neon line"
+            class="card-bottom-line"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<section class="newsletter">
+  <picture>
+    <source
+      srcset="{{ url_for('static', filename='img/newsletter-header-text-desktop.svg') }}"
+      media="(min-width: 1024px)"
+    />
+    <img
+      class="newsletter-header-text"
+      src="{{ url_for('static', filename='img/newsletter-header-text-mobile.svg') }}"
+      alt="Description of the image"
+    />
+  </picture>
+  <p class="description des-newsletter">
+    Subscribe our newsletter to stay updated. We promise to spam you.
+  </p>
+  <div class="newsletter-img-box">
+    <div class="newsletter-left-side"></div>
+    <div class="newsletter-right-side"></div>
+    <picture>
+      <source
+        srcset="{{ url_for('static', filename='img/newsletter-img-desktop.svg') }}"
+        media="(min-width: 1200px)"
+      />
+      <source
+        srcset="{{ url_for('static', filename='img/newsletter-img-tablet.svg') }}"
+        media="(min-width: 768px)"
+      />
+      <img
+        class="newsletter-img"
+        src="{{ url_for('static', filename='img/newsletter-img-mobile.svg') }}"
+        alt="Description of the image"
+      />
+    </picture>
+  </div>
+  <div class="newsletter-form">
+    <input
+      type="email"
+      class="newletter-email-input"
+      placeholder="Email address"
+    />
+    <button class="subscribe-btn">Subscribe</button>
+
+    <div id="newsletterModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <p class="modal-text">Newsletter is currently not available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %} {% if category == 'error' %}
+<div class="alert alert-danger" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% else %}
+<div class="alert alert-success" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% endif %} {% endfor %} {% endif %} {% endwith %} {% endblock %}

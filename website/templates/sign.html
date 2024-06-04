@@ -1,0 +1,194 @@
+{% extends 'base.html' %} {% block content %}
+<section class="sign">
+  <div class="sign-container">
+    <div class="sign-in-box">
+      <picture>
+        <source
+          srcset="{{ url_for('static', filename='img/sign-card-lines-desktop.svg') }}"
+          media="(min-width: 768px)"
+        />
+        <img
+          class="sign-card-lines"
+          src="{{ url_for('static', filename='img/sign-card-lines-mobile.svg') }}"
+          alt="Description of the image"
+        />
+      </picture>
+      <picture>
+        <source
+          srcset="{{ url_for('static', filename='img/sign-card-bottom-line-desktop.svg') }}"
+          media="(min-width: 768px)"
+        />
+        <img
+          class="sign-card-bottom-line"
+          src="{{ url_for('static', filename='img/sign-card-bottom-line-mobile.svg') }}"
+          alt="Description of the image"
+        />
+      </picture>
+      <picture>
+        <source
+          srcset="{{ url_for('static', filename='img/sign-card-top-line-desktop.svg') }}"
+          media="(min-width: 768px)"
+        />
+        <img
+          class="sign-card-top-line"
+          src="{{ url_for('static', filename='img/sign-card-top-line-mobile.svg') }}"
+          alt="Description of the image"
+        />
+      </picture>
+      <picture>
+        <source
+          srcset="{{ url_for('static', filename='img/sign-card-glow-desktop.svg') }}"
+          media="(min-width: 768px)"
+        />
+        <img
+          class="sign-card-glow"
+          src="{{ url_for('static', filename='img/sign-card-glow-mobile.svg') }}"
+          alt="Description of the image"
+        />
+      </picture>
+      <form
+        action="{{ url_for('auth.login') }}"
+        method="POST"
+        class="sign-in-form"
+      >
+        <div class="inputs-container">
+          <input
+            type="email"
+            class="sign-inputs"
+            placeholder="Email address"
+            name="login-email"
+          />
+          <input
+            type="password"
+            class="sign-inputs"
+            placeholder="Password"
+            name="login-password"
+          />
+        </div>
+        <div class="checkbox-container">
+          <input
+            type="checkbox"
+            class="sign-checkbox"
+            id="remember-checkbox"
+            name="remember"
+          />
+          <label for="remember-checkbox" class="checkbox-text"
+            >Remember me</label
+          >
+        </div>
+        <button type="submit" class="form-sign-in-btn">Sign in</button>
+      </form>
+
+      <form
+        action="{{ url_for('auth.sign') }}"
+        method="POST"
+        class="sign-up-form"
+      >
+        <div class="inputs-container">
+          <input
+            type="text"
+            name="sign-username"
+            class="sign-inputs"
+            placeholder="Username"
+            required
+          />
+          <input
+            type="email"
+            name="sign-email"
+            class="sign-inputs"
+            placeholder="Email address"
+            required
+          />
+          <input
+            type="password"
+            name="sign-password"
+            class="sign-inputs"
+            placeholder="Password"
+            required
+          />
+          <input
+            type="password"
+            name="sign-confirm-password"
+            class="sign-inputs extra-margin-b"
+            placeholder="Confirm Password"
+            required
+          />
+        </div>
+        <button type="submit" class="form-sign-up-btn">Sign up</button>
+      </form>
+      <div class="sign-divider"></div>
+      <div class="google-login">
+        <p class="sign-text">Or continue with</p>
+        <a href="#" class="google-btn"
+          ><img
+            src="{{ url_for('static', filename='img/google-icon.svg') }}"
+            alt="Description of the image"
+            class="google-icon"
+        /></a>
+      </div>
+    </div>
+    <div class="sign-right-side">
+      <div class="sign-in-right-side">
+        <h1 class="sign-primary-heading">Don't have an account?</h1>
+        <a href="#" id="switch-to-sign-up" class="sign-btn-v2">Sign up</a>
+      </div>
+      <div class="sign-un-right-side">
+        <h1 class="sign-primary-heading">Already a member?</h1>
+        <a href="#" id="switch-to-sign-in" class="sign-btn-v2">Sign in</a>
+      </div>
+
+      <h2 class="sign-secondary-heading">Why you should create an account</h2>
+      <ul class="benefits-list">
+        <li class="benefit">
+          <img
+            src="{{ url_for('static', filename='img/save-icon.png') }}"
+            alt="Description of the image"
+            class="benefit-icon"
+          />
+          <p class="benefit-description">Save favourite posts</p>
+        </li>
+        <li class="benefit">
+          <img
+            src="{{ url_for('static', filename='img/feedback-icon.svg') }}"
+            alt="Description of the image"
+            class="benefit-icon"
+          />
+          <p class="benefit-description">Give and receive feedback</p>
+        </li>
+        <li class="benefit">
+          <img
+            src="{{ url_for('static', filename='img/special-posts-icon.png') }}"
+            alt="Description of the image"
+            class="benefit-icon"
+          />
+          <p class="benefit-description">Unlock special posts</p>
+        </li>
+        <li class="benefit">
+          <img
+            src="{{ url_for('static', filename='img/comments-icon.svg') }}"
+            alt="Description of the image"
+            class="benefit-icon"
+          />
+          <p class="benefit-description">Add comments</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %} {% if category == 'error' %}
+<div class="alert alert-danger" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% else %}
+<div class="alert alert-success" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% endif %} {% endfor %} {% endif %} {% endwith %} {% endblock %}

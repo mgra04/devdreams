@@ -1,0 +1,91 @@
+{% extends 'base.html' %} {% block content %}
+<form method="POST" class="post-creator">
+  <label for="title">Title</label>
+  <input type="text" id="title" name="post-title" required class="form-input" />
+
+  <label for="image_url">Image URL</label>
+  <input
+    type="text"
+    id="image_url"
+    name="post-image-url"
+    required
+    class="form-input"
+  />
+
+  <label for="read-time">Read time (number in minutes)</label>
+  <input
+    type="text"
+    id="read-time"
+    name="post-read-time"
+    required
+    class="form-input"
+  />
+
+  <label for="category">Category</label>
+  <select id="category" name="post-category" required class="form-select">
+    <option value="News">News</option>
+    <option value="Frontend">Frontend</option>
+    <option value="Backend">Backend</option>
+    <option value="Design">Design</option>
+    <option value="Tips & Tricks">Tips & Tricks</option>
+    <option value="Project Showcases">Project Showcases</option>
+    <option value="Uncategorized">Uncategorized</option>
+  </select>
+
+  <label for="technology">Main technology</label>
+  <select
+    id="main-technology"
+    name="post-main-technology"
+    required
+    class="form-select"
+  >
+    <option value="HTML">HTML</option>
+    <option value="CSS">CSS</option>
+    <option value="JavaScript">JavaScript</option>
+    <option value="Python">Python</option>
+    <option value="Flask">Flask</option>
+    <option value="Django">Django</option>
+    <option value="React.js">React.js</option>
+    <option value="Next.js">Next.js</option>
+    <option value="Three.js">Three.js</option>
+    <option value="Blender">Blender</option>
+    <option value="Figma">Figma</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <div id="sections" class="sections"></div>
+
+  <div class="button-group">
+    <button type="button" class="add-btn" onclick="addSection('heading')">
+      Add Heading
+    </button>
+    <button type="button" class="add-btn" onclick="addSection('text')">
+      Add Text
+    </button>
+    <button type="button" class="add-btn" onclick="addSection('image')">
+      Add Image
+    </button>
+    <button type="button" class="add-btn" onclick="addSection('code')">
+      Add Code
+    </button>
+  </div>
+
+  <button type="submit" class="creat-post-btn">Create Post</button>
+</form>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %} {% if category == 'error' %}
+<div class="alert alert-danger" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% else %}
+<div class="alert alert-success" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% endif %} {% endfor %} {% endif %} {% endwith %} {% endblock %}

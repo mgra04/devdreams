@@ -1,0 +1,345 @@
+.sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 120rem;
+  padding: 0 2.4rem;
+}
+
+.sign-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  margin-top: 6.4rem;
+  margin-bottom: 9.6rem;
+  gap: 9.6rem;
+}
+
+.sign-in-box {
+  justify-self: end;
+  position: relative;
+  background: #141414;
+  border: 1px solid #454545;
+  border-radius: 2.4rem;
+  padding: 6.4rem 4.8rem;
+  width: 100%;
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 130px 36px 0px rgba(0, 0, 0, 0.01),
+    0px 83px 33px 0px rgba(0, 0, 0, 0.05), 0px 47px 28px 0px rgba(0, 0, 0, 0.18),
+    0px 21px 21px 0px rgba(0, 0, 0, 0.3), 0px 5px 11px 0px rgba(0, 0, 0, 0.34);
+}
+
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+}
+
+.sign-up-form {
+  display: none;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.sign-inputs {
+  width: 100%;
+  border-radius: 1.6rem;
+  border: 1px solid #404040;
+  background: #1d1d1d;
+  padding: 2.2rem 3.2rem;
+  color: #edf0ff;
+  font-size: 1.6rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-left: 3.2rem;
+  margin-bottom: 1.6rem;
+}
+
+.sign-checkbox {
+  appearance: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 2px solid #362cac;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.sign-checkbox:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: #8880e3;
+  border-radius: 1px;
+}
+
+.checkbox-text {
+  margin-left: 1.2rem;
+  font-size: 1.2rem;
+}
+
+.sign-btn-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 2rem 3.2rem;
+  background-color: #362cac;
+  border-radius: 1.6rem;
+  width: 100%;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  color: #edf0ff;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.form-sign-in-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 2rem 3.2rem;
+  background-color: #362cac;
+  border-radius: 1.6rem;
+  width: 100%;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  color: #edf0ff;
+  font-size: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-sign-up-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 2rem 3.2rem;
+  background-color: #362cac;
+  border-radius: 1.6rem;
+  width: 100%;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  color: #edf0ff;
+  font-size: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sign-divider {
+  width: 32rem;
+  height: 1px;
+  background-color: #454545;
+  opacity: 0.6;
+  margin-top: 3.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.google-login {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.sign-text {
+  color: #ced7ff;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.google-btn {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.3rem 3.2rem;
+  background-color: rgba(55, 44, 172, 0.6);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  border-radius: 1.6rem;
+}
+
+.google-icon {
+  fill: #8880e3;
+}
+
+.sign-card-lines {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sign-card-bottom-line {
+  position: absolute;
+  bottom: -1.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sign-card-top-line {
+  position: absolute;
+  top: -0.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sign-card-glow {
+  position: absolute;
+  z-index: -1;
+  bottom: -9.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sign-right-side {
+  max-width: 40rem;
+}
+
+.sign-in-right-side {
+  display: block;
+}
+
+.sign-un-right-side {
+  display: none;
+}
+
+.sign-primary-heading {
+  color: #edf0ff;
+  font-size: 3.2rem;
+  font-weight: 500;
+  margin-bottom: 2.4rem;
+}
+
+.sign-secondary-heading {
+  color: #edf0ff;
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-top: 4.8rem;
+  margin-bottom: 1.6rem;
+}
+
+.benefits-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.benefit-description {
+  color: #ced7ff;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.extra-margin-b {
+  margin-bottom: 3.2rem;
+}
+
+@media (max-width: 75rem) {
+  .sign {
+    padding: 0 2.4rem;
+  }
+
+  .sign-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 9.6rem;
+    margin-top: 4.8rem;
+    margin-bottom: 6.4rem;
+  }
+
+  .sign-in-box {
+    justify-self: center;
+    padding: 6.4rem 3.2rem;
+    max-width: 50rem;
+    width: 100%;
+  }
+
+  .sign-inputs {
+    width: 100%;
+    border-radius: 1.6rem;
+    border: 1px solid #404040;
+    background: #1d1d1d;
+    padding: 1.8rem 2.4rem;
+    color: #edf0ff;
+    font-size: 1.6rem;
+  }
+
+  .checkbox-container {
+    margin-left: 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .sign-divider {
+    max-width: 28rem;
+    width: 100%;
+  }
+
+  .sign-btn-v2 {
+    padding: 1.6rem 3.2rem;
+  }
+
+  .form-sign-in-btn {
+    padding: 1.6rem 3.2rem;
+  }
+
+  .form-sign-up-btn {
+    padding: 1.6rem 3.2rem;
+  }
+
+  .sign-card-glow {
+    bottom: -9.6rem;
+  }
+
+  .sign-primary-heading {
+    font-size: 2.4rem;
+  }
+
+  .sign-secondary-heading {
+    font-size: 1.8rem;
+  }
+
+  .sign-right-side {
+    width: 100%;
+    justify-self: center;
+    max-width: 50rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .sign-in-box {
+    justify-self: center;
+    padding: 6.4rem 2.4rem;
+    width: 100%;
+  }
+
+  .sign-card-glow {
+    bottom: -6.4rem;
+  }
+}

@@ -1,0 +1,87 @@
+{% extends "base.html" %} {% block content %}
+<h2 class="admin-heading">Użytkownicy</h2>
+<div class="grid-container-4el">
+  <div class="grid-header"><h3 class="admin-subheading">Email address</h3></div>
+  <div class="grid-header"><h3 class="admin-subheading">Username</h3></div>
+  <div class="grid-header"><h3 class="admin-subheading">Role</h3></div>
+  <div class="grid-header"><h3 class="admin-subheading">Actions</h3></div>
+  {% for user in users %}
+  <div class="grid-item"><p class="grid-item-text">{{ user.email }}</p></div>
+  <div class="grid-item"><p class="grid-item-text">{{ user.username }}</p></div>
+  <div class="grid-item"><p class="grid-item-text">{{ user.role }}</p></div>
+  <div class="grid-item">
+    <form
+      action="{{ url_for('admin.delete_user', user_id=user.id) }}"
+      method="POST"
+    >
+      <button
+        type="submit"
+        class="delete-btn"
+        onclick="return confirm('Czy na pewno chcesz usunąć tego użytkownika?');"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
+  {% endfor %}
+</div>
+
+<h2 class="admin-heading">Posty</h2>
+<div class="grid-container-4el">
+  <div class="grid-header">
+    <h3 class="admin-subheading">Title</h3>
+  </div>
+  <div class="grid-header">
+    <h3 class="admin-subheading">Category</h3>
+  </div>
+  <div class="grid-header">
+    <h3 class="admin-subheading">Main technology</h3>
+  </div>
+  <div class="grid-header">
+    <h3 class="admin-subheading">Actions</h3>
+  </div>
+  {% for post in posts %}
+  <div class="grid-item post-link">
+    <a
+      class="grid-item-link"
+      href="{{ url_for('views.post', post_id=post.id) }}"
+      ><p class="grid-item-text">{{ post.title }}</p></a
+    >
+  </div>
+  <div class="grid-item"><p class="grid-item-text">{{ post.category }}</p></div>
+  <div class="grid-item">
+    <p class="grid-item-text">{{ post.main_technology }}</p>
+  </div>
+  <div class="grid-item">
+    <form
+      action="{{ url_for('admin.delete_post', post_id=post.id) }}"
+      method="POST"
+    >
+      <button
+        type="submit"
+        class="delete-btn"
+        onclick="return confirm('Czy na pewno chcesz usunąć ten post?');"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
+  {% endfor %}
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %} {% if category == 'error' %}
+<div class="alert alert-danger" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% else %}
+<div class="alert alert-success" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% endif %} {% endfor %} {% endif %} {% endwith %} {% endblock %}

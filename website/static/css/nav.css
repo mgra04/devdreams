@@ -1,0 +1,201 @@
+.top-nav {
+  background-color: #101010;
+  position: sticky;
+  top: 0;
+  max-width: 120rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2.4rem;
+  z-index: 55;
+  /* 5 to moja szczęśliwa cyfra */
+}
+
+.logo-home {
+  text-decoration: none;
+}
+
+.top-nav::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo-text {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.16rem;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 6.4rem;
+}
+
+.nav-items {
+  list-style: none;
+  display: flex;
+  gap: 4.8rem;
+}
+
+.nav-option {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: all ease-in 200ms;
+}
+
+.nav-option:hover {
+  transform: scale(1.1);
+  opacity: 0.6;
+}
+
+.sign-btn {
+  background-color: #372cac00;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border-radius: 1.4rem;
+  box-shadow: inset 0 0 0 1px #362cac;
+  transition: all ease-in 200ms;
+}
+
+.sign-btn:hover {
+  background-color: #362cac;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-icon {
+  width: 3.2rem;
+  height: 3.2rem;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navigation {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #141414;
+    width: 100%;
+    flex-direction: column;
+    gap: 3.2rem;
+    padding: 3.2rem;
+    z-index: -1;
+    animation-fill-mode: forwards;
+    border-bottom: 1px solid #454545;
+    border-radius: 0 0 2.4rem 2.4rem;
+    box-shadow: 0px 24px 48px -20px rgba(0, 0, 0, 0.2);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  .navigation.active {
+    visibility: visible;
+    opacity: 1;
+    animation: slideIn 0.5s forwards;
+  }
+
+  .navigation.inactive {
+    visibility: hidden;
+    opacity: 0;
+    animation: slideOut 0.5s forwards;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .nav-items {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  .nav-option {
+    font-size: 1.6rem;
+    padding: 1.6rem;
+    display: block;
+  }
+
+  .sign-btn {
+    font-size: 1.6rem;
+    padding: 1.3rem 2.6rem;
+    border-radius: 1.6rem;
+  }
+}
+
+.footer {
+  margin-top: 4.8rem;
+  width: 100%;
+  background-color: #141414;
+  border-top: 1px solid #454545;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
+  padding: 4rem 2.4rem 6.4rem 2.4rem;
+}
+
+.social-media-links {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.footer-text {
+  color: rgba(237, 240, 255, 0.6);
+  font-size: 1.4rem;
+}
+
+@media (min-width: 75rem) {
+  .footer {
+    padding: 7.2rem 2.4rem 9.6rem 2.4rem;
+  }
+}

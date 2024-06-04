@@ -1,0 +1,221 @@
+{% extends 'base.html' %} {% block content %}
+<div class="post-detail">
+  <img src="{{ post.image_url }}" alt="Post image" class="main-post-img" />
+  <h2 class="post-title">{{ post.title }}</h2>
+  <div class="post-undertitle-line"></div>
+  {% for section in post.sections %} {% if section.type == 'heading' %}
+  <h3 class="post-subtitle">{{ section.content }}</h3>
+  {% elif section.type == 'text' %}
+  <p class="post-description">{{ section.content }}</p>
+  {% elif section.type == 'image' %}
+  <img
+    src="{{ section.content }}"
+    alt="Section image"
+    class="additional-images"
+  />
+  {% elif section.type == 'code' %}
+  <pre><code class="code-text">{{ section.content }}</code></pre>
+  {% endif %} {% endfor %}
+</div>
+
+<div class="post-divider">
+  <img
+    src="{{ url_for('static', filename='img/post-divider-desktop.svg') }}"
+    alt="Description of the image"
+    class="post-divider-img"
+  />
+</div>
+<section class="comments">
+  {% if current_user.is_authenticated %}
+  <form method="POST" class="add-comment-form">
+    <textarea
+      type="text"
+      class="add-comment-textarea"
+      placeholder="Write something..."
+      name="content"
+    ></textarea>
+    <button class="send-comment-btn" type="submit">Send comment</button>
+  </form>
+  {% else %}
+  <p class="login-text">
+    <a href="{{ url_for('auth.login') }}" class="join-link">Sign in</a> to join
+    the conversation
+  </p>
+  {% endif %}
+
+  <div class="comments-header">
+    <img
+      src="{{ url_for('static', filename='img/post-comment-icon.svg') }}"
+      alt="comment icon"
+      class="comment-icon"
+    />
+    <h2 class="comments-heading">{{ comments_count }} Comments</h2>
+  </div>
+  <div class="comments-header-divider"></div>
+  <div class="comments-box">
+    {% if comments_data %} {% for comment in comments_data %}
+    <!-- <h1>{{ comment.id }}</h1> -->
+    <div class="comment">
+      <div class="comment-top-section">
+        <div class="comment-left-side">
+          <div class="comment-author-img-box">
+            <img
+              src="{{ comment.profile_img }}"
+              alt="Comment author image"
+              class="comment-author-img"
+            />
+          </div>
+          <div class="comment-details">
+            <h3 class="comment-author-name">{{ comment.username }}</h3>
+            <span class="comment-add-date">{{ comment.created_at }}</span>
+          </div>
+        </div>
+        <!-- <form
+          method="POST"
+          class="likes-form"
+        >
+          <input type="hidden" name="comment_id" value="{{ comment.id }}" />
+          <button class="like-btn" type="submit">
+            <img
+              src="{{ url_for('static', filename='img/heart-icon.svg') }}"
+              alt="Heart icon"
+              class="like-img"
+            />
+            <span class="like-counter">{{ comment.likes }}</span>
+          </button>
+        </form> -->
+      </div>
+      <p class="comment-text">{{ comment.content }}</p>
+      <div class="comment-bottom-section">
+        <!-- jeśli są odpowiedzi -->
+        {% if comment.replies %}
+        <div class="replies-box">
+          <div class="replies-base">
+            <div class="replies-base-content">
+              <img
+                src="{{ url_for('static', filename='img/arrow-down-icon.svg') }}"
+                alt="Arrow down icon"
+                class="arrow-down-icon"
+              />
+              <p class="replies-text">
+                <span class="replies-number">{{ comment.replies|length }}</span>
+                Replies
+              </p>
+            </div>
+          </div>
+          <!-- po kliknięciu w rozwinięcie odpowiedzi -->
+          <div class="all-replies">
+            <div class="reply-comments">
+              {% for reply in comment.replies %}
+              <div class="reply-comment">
+                <div class="comment-top-section">
+                  <div class="comment-left-side">
+                    <div class="comment-author-img-box">
+                      <img
+                        src="{{ comment.profile_img }}"
+                        alt="Comment author image"
+                        class="comment-author-img"
+                      />
+                    </div>
+                    <div class="comment-details">
+                      <h3 class="comment-author-name">{{ reply.username }}</h3>
+                      <span class="comment-add-date"
+                        >{{ reply.created_at }}</span
+                      >
+                    </div>
+                  </div>
+                  <!-- <form method="POST" class="likes-form">
+                    <button class="like-btn">
+                      <img
+                        src="{{ url_for('static', filename='img/heart-icon.svg') }}"
+                        alt="Heart icon"
+                        class="like-img"
+                      />
+                      <span class="like-counter">{{ reply.likes }}</span>
+                    </button>
+                  </form> -->
+                </div>
+                <p class="comment-text">{{ reply.content }}</p>
+                <div class="reply-comment-divider"></div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="new-reply-box-show">
+              <h3 class="new-reply-text">New reply</h3>
+              <form method="POST" class="new-reply-form">
+                <input
+                  type="hidden"
+                  name="comment-id"
+                  value="{{ comment.id }}"
+                />
+                <textarea
+                  type="text"
+                  class="new-reply-textarea"
+                  placeholder="Write a new reply."
+                  name="reply-content"
+                ></textarea>
+                <div class="new-reply-buttons">
+                  <button class="cancel-btn" type="button">Cancel</button>
+                  <button class="submit-btn" type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- jeśli nie ma odpowiedzi -->
+        {% else %}
+        <div class="reply-box">
+          <div class="reply-base">
+            <div class="reply-base-content">
+              <img
+                src="{{ url_for('static', filename='img/reply-icon.svg') }}"
+                alt="Reply icon"
+                class="reply-icon"
+              />
+              <p class="reply-text">Reply</p>
+            </div>
+          </div>
+          <!-- po kliknięciu w reply box pokaż diva new-reply-box -->
+          <div class="new-reply-box">
+            <h3 class="new-reply-text">New reply</h3>
+            <form method="POST" class="new-reply-form">
+              <input type="hidden" name="comment-id" value="{{ comment.id }}" />
+              <textarea
+                type="text"
+                class="new-reply-textarea"
+                placeholder="Write a new reply."
+                name="reply-content"
+              ></textarea>
+              <div class="new-reply-buttons">
+                <button class="cancel-btn" type="button">Cancel</button>
+                <button class="submit-btn" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="comment-end-line"></div>
+    </div>
+    {% else %}
+    <p class="no-comments-text">No comments added yet</p>
+    {% endfor %} {% endif %}
+  </div>
+</section>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %} {% if category == 'error' %}
+<div class="alert alert-danger" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% else %}
+<div class="alert alert-success" role="alert">
+  {{ message }}
+  <button class="close">
+    <span class="close-content">&times;</span>
+  </button>
+</div>
+{% endif %} {% endfor %} {% endif %} {% endwith %} {% endblock %}

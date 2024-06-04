@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block content %} {% set filtered_posts = posts |
+selectattr('main_technology', 'in', ['HTML', 'CSS', 'JavaScript']) | list %} {%
+if filtered_posts %}
+<section class="posts">
+  <div class="posts-container">
+    {% for post in filtered_posts %}
+    <a href="{{ url_for('views.post', post_id=post.id) }}" class="post-card">
+      <img
+        src="{{ url_for('static', filename='img/post-card-top-line.svg') }}"
+        alt="purple line"
+        class="post-card-top-line"
+      />
+      <img
+        src="{{ url_for('static', filename='img/post-card-bottom-line.svg') }}"
+        alt="white line"
+        class="post-card-bottom-line"
+      />
+      <div class="post-img-box">
+        <div class="categories">
+          <div class="category">
+            <span class="category-text">{{ post.category }}</span>
+          </div>
+        </div>
+        <img src="{{ post.image_url }}" alt="Description" class="post-img" />
+      </div>
+
+      <div class="post-card-divider"></div>
+      <div class="post-card-content">
+        <h3 class="post-card-title">{{ post.title }}</h3>
+        <div class="authors-section">
+          <div class="authors-imgs">
+            <img
+              src="{{ url_for('static', filename='img/author1.png') }}"
+              alt="
+                portrait photo"
+              class="author-img"
+            />
+            <img
+              src="{{ url_for('static', filename='img/author2.png') }}"
+              alt="
+                portrait photo"
+              class="author-img img-hidden"
+            />
+          </div>
+          <div class="authors-info">
+            <p class="authors-names">Mikołaj Grabowski, Bartek Kluza</p>
+            <div class="authors-date">
+              <p class="authors-text">{{ post.created_date() }}</p>
+              <div class="dot"></div>
+              <p class="authors-text">{{ post.read_time }} minutes read</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% else %}
+<div class="blank-screen-box">
+  <h1>No posts added yet</h1>
+</div>
+{% endif %} {% endblock %}
